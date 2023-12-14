@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <title>Unified Collaborative Workspace</title>
+    <style>
+        body {
+            font-family: 'monospace', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #d66969;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            color: white;
+            font-size: 1.5em;
+            z-index: 3;
+        }
+
+        .navbar img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .branding {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            color: white;
+            margin: 0;
+            margin-right: 15px;
+        }
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .icon-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .icon-group img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .icon-group p {
+            margin: 0;
+            color: white;
+        }
+
+        .service-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #d66969;
+            padding: 20px;
+            color: white;
+        }
+
+        .service-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .service-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .service-image img {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .project-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: #d66969;
+            color: white;
+            padding: 0px;
+            z-index: 2;
+            transition: right 0.3s ease;
+            overflow: hidden;
+        }
+
+        .project-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-panel li {
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .menu-icon {
+                display: block;
+                order: 1;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .branding {
+                margin-bottom: 10px;
+            }
+
+            .navigation {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                background-color: #d66969;
+                padding: 15px;
+                z-index: 1;
+            }
+
+            .navigation.active {
+                display: flex;
+            }
+
+            .navigation div {
+                margin: 10px;
+                text-align: center;
+            }
+
+            .project-panel {
+                top: 70px;
+                height: calc(100% - 70px);
+            }
+
+            .service-section {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                padding: 15px;
+            }
+
+            .service-content {
+                order: 1;
+                text-align: left;
+            }
+
+            .service-image {
+                order: 2;
+                text-align: left;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .project-panel {
+                width: 100%;
+            }
+        }
+
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="branding">
+            <img src="icons/your-logo.png" alt="App Logo">
+            <h1>PRODIGYLINK</h1>
+        </div>
+        <div class="menu-icon" onclick="toggleProjectPanel()">&#9776;</div>
+    </div>
+    <section id="about-model" style="display: flex; align-items: center; padding: 20px;">
+        <div style="flex: 1;">
+            <h2>Welcome to PRODIGYLINK- Your Unified Collaborative Workspace</h2>
+            <p>
+                Embark on a journey into a revolutionary realm of collaborative efficiency with our Unified Collaborative Workspace. Witness a paradigm shift in how teams engage, seamlessly share ideas, and co-create within a virtual environment like never before. Welcome to the future of collaboration – where innovation knows no bounds.
+            </p>
+        </div>
+        <div style="flex: 1;">
+            <img src="/your-image.jpg" alt="Image Related to Your Model" style="width: 100%; max-width: 750px;">
+        </div>
+    </section>
+    <section id="services" class="service-section">
+        <div class="service-content">
+            <h2>Our Services</h2>
+            <ul>
+                <li>
+                    <b>Unleash the power of innovation</b>. Propel your projects forward, break barriers, and foster creativity like never before.
+                </li>
+                <li>
+                    <b>Seamlessly integrate your workflows</b>. Effortlessly connect your tools and resources, streamlining collaboration and maximizing efficiency.
+                </li>
+                <li>
+                    <b>Redefine productivity</b>. Experience a new level of efficiency as you streamline tasks, manage projects, and achieve more in less time.
+                </li>
+            </ul>
+        </div>
+        <div class="service-image">
+            <img src="/service-image.png" alt="Image Related to Services">
+        </div>
+    </section>
+    <section id="feature-icons">
+        <div>
+            <h2>Key Features</h2>
+        </div>
+    </section>
+    <div class="navigation">
+        <div class="icon-group" onclick="window.location.href='chat.html'">
+            <img src="icons/chat-icon.png" alt="Chat Icon">
+            <p>Chat</p>
+        </div>
+
+        <div class="icon-group" onclick="window.location.href='code-editor.html'">
+            <img src="icons/code-icon.png" alt="Code Icon">
+            <p>Code Editor</p>
+        </div>
+
+        <div class="icon-group" onclick="showDocsPage()">
+            <img src="icons/docs-icon.png" alt="Docs Icon">
+            <p>Document Editor</p>
+        </div>
+
+        <div class="icon-group" onclick="window.location.href='sheets.html'">
+            <img src="icons/excel-icon.png" alt="Excel Icon">
+            <p>Excel Spreadsheet</p>
+        </div>
+
+        <div class="icon-group" onclick="showPowerPointPage()">
+            <img src="icons/powerpoint-icon.png" alt="PowerPoint Icon">
+            <p>PowerPoint</p>
+        </div>
+    </div>
+    </div>
+
+    <div class="project-panel" id="projectPanel">
+        <div class="user-section">
+            <h2>User Name</h2>
+        </div>
+        <ul>
+            <li onclick="loadProject('Project 1')">Project 1</li>
+            <li onclick="loadProject('Project 2')">Project 2</li>
+            <li onclick="loadProject('Project 3')">Project 3</li>
+        </ul>
+    </div>
+    <footer>
+        <div>
+            <p>&copy; 2023 PRODIGYLINK. All rights reserved.</p>
+            <p>Contact: support@prodigylink.com</p>
+        </div>
+        <div class="contact-info">
+            <p>Phone: +1 (555) 123-4567</p>
+        </div>
+        
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="scripts.js"></script>
+
+    <script>
+        function showChatPage() {
+            hideAllPages();
+            document.getElementById('chat-page').style.display = 'block';
+        }
+
+        function showDocsPage() {
+            hideAllPages();
+            document.getElementById('docs-page').style.display = 'block';
+        }
+
+        function showExcelPage() {
+            hideAllPages();
+            document.getElementById('excel-page').style.display = 'block';
+        }
+
+        function showPowerPointPage() {
+            hideAllPages();
+            document.getElementById('powerpoint-page').style.display = 'block';
+        }
+
+        function hideAllPages() {
+            const pages = document.querySelectorAll('.page-container');
+            pages.forEach(page => page.style.display = 'none');
+        }
+
+        function toggleProjectPanel() {
+            const projectPanel = document.querySelector('.project-panel');
+            const menuIcon = document.querySelector('.menu-icon');
+            const isOpen = projectPanel.style.right === '0px';
+
+            if (isOpen) {
+                projectPanel.style.right = '-300px';
+                menuIcon.innerHTML = '&#9776;';
+            } else {
+                projectPanel.style.right = '0px';
+                menuIcon.innerHTML = '&times;';
+            }
+        }
+
+        document.addEventListener('click', function (event) {
+            const projectPanel = document.querySelector('.project-panel');
+            const menuIcon = document.querySelector('.menu-icon');
+            const isOpen = projectPanel.style.right === '0px';
+
+            if (isOpen && event.target !== projectPanel && !projectPanel.contains(event.target) && event.target !== menuIcon) {
+                projectPanel.style.right = '-300px';
+                menuIcon.innerHTML = '&#9776;';
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+

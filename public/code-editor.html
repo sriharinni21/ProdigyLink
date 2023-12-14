@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+<script type="module" src="https://cdn.skypack.dev/preact"></script>
+<script type="module" src="https://cdn.skypack.dev/@monaco-editor/react"></script>
+
+  <title>Unified Collaborative Workspace - Code Editor</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #45a0eb;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .branding {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      color: white;
+      margin: 0;
+    }
+
+    #editor-container {
+      height: 80vh;
+    }
+
+    #output-container {
+      padding: 10px;
+      background-color: #f0f0f0;
+      max-height: 20vh;
+      overflow-y: auto;
+    }
+
+    #run-btn {
+      margin-top: 10px;
+      padding: 8px;
+      background-color: #45a0eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    #run-btn:hover {
+      background-color: #128c7e;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="branding">
+      <img src="icons/your-logo.png" alt="App Logo">
+      <h1>Unified Collaborative Workspace - Code Editor</h1>
+    </div>
+  </div>
+
+  <div id="editor-container"></div>
+  <button id="run-btn" onclick="runCode()">Run Code</button>
+  <div id="output-container"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+  <script>
+    const editor = ace.edit("editor-container");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+
+    function runCode() {
+      const code = editor.getValue();
+
+      
+      const outputContainer = document.getElementById('output-container');
+      outputContainer.textContent = 'Running code...\n\n' + code;
+    }
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
